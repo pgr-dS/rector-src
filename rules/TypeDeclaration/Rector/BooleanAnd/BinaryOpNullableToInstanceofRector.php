@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Rector\TypeDeclaration\Rector\BooleanAnd;
 
+use PhpParser\Node\Expr\BinaryOp\BooleanAnd;
+use PhpParser\Node\Expr\BinaryOp\BooleanOr;
 use PhpParser\Node;
 use Rector\Core\Rector\AbstractRector;
 use Symplify\RuleDocGenerator\ValueObject\CodeSample\CodeSample;
@@ -49,11 +51,11 @@ CODE_SAMPLE
      */
     public function getNodeTypes(): array
     {
-        return [\PhpParser\Node\Expr\BinaryOp\BooleanAnd::class, \PhpParser\Node\Expr\BinaryOp\BooleanOr::class];
+        return [BooleanAnd::class, BooleanOr::class];
     }
 
     /**
-     * @param \PhpParser\Node\Expr\BinaryOp\BooleanAnd|\PhpParser\Node\Expr\BinaryOp\BooleanOr $node
+     * @param BooleanAnd|BooleanOr $node
      */
     public function refactor(Node $node): ?Node
     {
